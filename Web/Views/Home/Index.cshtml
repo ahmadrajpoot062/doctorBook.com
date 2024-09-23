@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@model List<Core.Entities.Doctor>
+
+@section Styles {
+ <style>
+    @@media screen and (min-width:1200px) {
+      #indexCol2 img {
+        height: 50%;
+      }
+    }
+
+    #indexCol1 img {
+      height: 100px;
+    }
+
+    @@media screen and (min-width:400px) {
+      #indexCol1 img {
+        height: 150px;
+      }
+    }
+
+    @@media screen and (min-width:576px) {
+      #indexCol1 img {
+        height: 170px;
+      }
+    }
+
+    @@media screen and (min-width:700px) {
+      #indexCol1 img {
+        height: 130px;
+      }
+    }
+
+    @@media screen and (min-width:800px) {
+      #indexCol1 img {
+        height: 200px;
+      }
+    }
+
+    @@media screen and (min-width:1000px) {
+      #indexCol1 img {
+        height: 250px;
+      }
+    }
+
+    @@media screen and (min-width:1200px) {
+      #indexCol1 img {
+        height: 230px;
+      }
+    }
+
+        #doctorOrAdmin .btn {
+            color: white;
+            background:  rgb(161, 62, 185);;
+        }
+
+        #doctorOrAdmin .btn:hover {
+                background: rgb(103, 15, 112);
+                border-color: blueviolet;
+                color:white;
+                transform: scale(1.03);
+                transition: transform 0.2s ease-in-out;
+            }
+  </style>
+}
+
+<marquee class="fst-italic fw-bold" behavior="sroll" scrollamount="10" style="color: rgb(62, 9, 68);">
+    Book your
+    Doctor's appointment online quickly and
+    easily!
+</marquee>
+
+<main class="container">
+    <div class="row">
+        <div id="indexCol1" class="col-12 col-xl-6 py-3 position-relative pe-5">
+            <h1 class="display-2 display-xxl-1 fw-bold mb-4 w-75">
+                Find Your Doctors,
+                <div style="color:rgb(116, 34, 136);">Online!</div>
+            </h1>
+            <p class="lead ps-xl-0 fw-bold fst-italic mt-5">
+                Book your Doctor's appointment online
+                easily!
+            </p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item ps-0">Book appointments 24/7 from the comfort of your home.</li>
+                <li class="list-group-item ps-0">Choose your preferred Doctors.</li>
+                <li class="list-group-item ps-0">Choose your preferred Date and time.</li>
+                <li class="list-group-item ps-0">Manage your appointments easily (booking, cancel).</li>
+                <li class="list-group-item ps-0">Receive confirmation and cancellation emails from your preferred doctor.</li>
+            </ul>
+            <p class="lead ps-xl-0 fw-bold fst-italic mt-3">Here you will find Doctors of these Categories:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item ps-0">Dentists.</li>
+                <li class="list-group-item ps-0">Cardiologists.</li>
+                <li class="list-group-item ps-0">Neurologists.</li>
+                <li class="list-group-item ps-0">Eye-Specialists.</li>
+            </ul>
+            <a href="/Home/ViewAppointments" class="btn btn-success mt-4">View Appointments</a>
+
+            <img id="hoursImage" src="~/images/24.png"
+                 class="rounded-circle border border-success border-5 position-absolute top-0 end-0 mt-4 mt-lg-5 me-0 me-md-5 me-xl-3 me-xxl-4"
+                 alt="">
+        </div>
+        <div id="indexCol2" class="col-12 col-xl-6 px-0 d-flex align-items-center justify-content-center p-0 mt-3 mt-xl-0">
+            <img src="~/images/doctors.jpg" class="img-fluid shadow" alt="">
+		</div>
+    </div>
+
+    <div class="h1 display-5 mt-4 fw-bolder fst-italic text-center text-secondary shadow-sm py-3 px-2 px-sm-0"
+         style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        All Doctors<i class="fa fa-user-md ms-2"></i>
+    </div>
+    <partial name="_allDoctorsPartial" model="Model" />
+    <partial name="_AboutPartial" />
+    <partial name="_ContactUsPartial" />
+</main>
+
+
+

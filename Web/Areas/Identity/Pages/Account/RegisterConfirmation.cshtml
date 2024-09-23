@@ -1,0 +1,52 @@
+﻿@page
+@model RegisterConfirmationModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register confirmation</title>
+    <link href="~/lib/bootstrap/bootstrap css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/my css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        a{
+            color:white;
+        }
+        body{
+            background: linear-gradient(90deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);
+        }
+        .container-fluid {
+            height:90vh;            
+            color:white;
+        }  
+        .bi{
+            font-size:200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+        <i class="bi bi-question-circle"></i>
+        <h1>Register confirmation</h1>
+
+    @{
+        if (@Model.DisplayConfirmAccountLink)
+        {
+            <p class="text-center">This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf" class="color:white">these docs</a> for how to configure a real email sender.Normally this would be emailed:</p>
+                <a id="confirm-link" href="@Model.EmailConfirmationUrl" class="btn btn-outline-light rounded-pill w-auto">Click here to confirm your account<i class="fa fa-hand-pointer-o ms-1" aria-hidden="true"></i></a>
+        }
+        else
+        {
+    <p>
+            Please check your email to confirm your account.
+    </p>
+        }
+    }
+    </div>
+</body>
+</html>

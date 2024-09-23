@@ -1,0 +1,159 @@
+#navbarSupportedContent a:link,
+footer a:link{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: larger;
+}
+
+/* Show dropdown menu on hover */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* required to fix the spacing issue */
+}
+
+#navbarSupportedContent a:hover,
+footer a:hover,#logout:hover{
+  background-color: white;
+  color:rgb(62, 9, 68);
+  padding: 7px;
+  border-radius: 5px;
+}
+
+#navbar a{
+  color: white;
+}
+
+#logout {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    /* Increase size by 3% on hover */
+    transition: transform 0.2s ease-in-out;
+    /* Add smooth transition effect */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contact-info i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: #999;
+}
+
+.social-media a:hover {
+  color: #fefdfd;
+  background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);
+  text-decoration: none;
+  padding: 5px;
+}
+
+.hover-size:hover {
+  transform: scale(1.03);
+  /* Increase size by 2% on hover */
+  transition: transform 0.2s ease-in-out;
+  /* Smooth transition */
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.top:link{
+  padding: 10px;
+  border:1px solid white;
+  border-radius: 8px;
+}
+
+@media screen and (min-width:576px) and (max-width:785px) {
+  #message-form {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width:786px) and (max-width:992px) {
+  #message-form {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width:993px) and (max-width:1200px) {
+  #message-form {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width:1201px) {
+  #message-form {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:991px) {
+  #navbar .row {
+    position: relative;
+  }
+
+  #navbar .row #col2 {
+    position: absolute;
+    right: 0;
+  }
+}
+
+#layoutFooter #col2 {
+  border-right: 1px solid white;
+}
+
+@media screen and (min-width:992px) {
+
+    #layoutFooter #col1,
+    #layoutFooter #col2 {
+        border-right: 1px solid white;
+    }
+}
+
+#carouselExampleIndicators{
+  height: 100vh;
+}
+
+@media screen and (max-width:991px) {
+  #carouselExampleIndicators{
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width:767px) {
+  #carouselExampleIndicators{
+    height: 60vh;
+  }
+}
+
+@media screen and (max-width:575px) {
+  #carouselExampleIndicators{
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width:449px) {
+  #carouselExampleIndicators{
+    height: 40vh;
+  }
+}
+
+
+.disabled-link {
+    pointer-events: none; /* Prevents click events */
+    cursor: not-allowed; /* Change cursor to indicate it's disabled */
+}

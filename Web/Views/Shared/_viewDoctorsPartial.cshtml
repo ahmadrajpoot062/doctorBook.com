@@ -1,0 +1,51 @@
+﻿@model List<Doctor>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <img src="~/images/noDataFound.jpg" style="height:40%;width:40%;" />        
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped-columns table-hover mt-5 align-middle border border-dark">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="row">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Speciality</th>
+                    <th scope="col">Qualification</th>
+                    <th scope="col">Timings</th>
+                    <th scope="col">Charges (PKR)</th>
+                    <th scope="col">Experience (years)</th>
+                    <th scope="col">Consultation Time (mins)</th>
+                    <th scope="col">Wait Time (mins)</th>
+                    <th scope="col">Diagnosis Satisfaction (%)</th>
+                    <th scope="col">Profile</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-group-divider">
+                @foreach (var doctor in Model)
+                {
+                    <tr>
+                        <td>@doctor.Id</td>
+                        <td>@doctor.Email</td>
+                        <td>@doctor.First_Name @doctor.Last_Name</td>
+                        <td>@doctor.Speciality</td>
+                        <td>@doctor.Qualification</td>
+                        <td>@doctor.Timings</td>
+                        <td>@doctor.Charges pkr</td>
+                        <td>@doctor.Experiance years</td>
+                        <td>@doctor.Consultation_Time mins</td>
+                        <td>@doctor.Wait_Time mins</td>
+                        <td>@doctor.Diagnosis_Satisfaction %</td>
+                        <td><a href="/Admin/Doctor_Profile?id=@doctor.Id" class="btn px-4 btn-success">View</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

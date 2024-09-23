@@ -1,0 +1,29 @@
+﻿@model List<Core.Entities.Doctor>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3 mb-5">
+        @foreach (var doctor in Model)
+        {
+            <div class="col">               
+                    <div class="card h-100 border-3 border-dark p-1 shadow">
+                    <a href="/Home/Doctor_Profile?id=@doctor.Id">
+                        <img src="@doctor.ImagePath" class="card-img-top" alt="Doctor image">
+                    </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Dr. @doctor.First_Name @doctor.Last_Name<br /><i class="text-secondary">(@doctor.Speciality)</i>
+                            </h5>
+                            <p class="card-text">@doctor.Qualification</p>
+                            <p></p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/Home/Doctor_Profile?id=@doctor.Id" class="btn btn-success">View Profile</a>
+                            <a href="/Appointment/Book_Appointment?id=@doctor.Id" class="btn text-white" style="background-color: rgb(161, 62, 185);"><i class="fa fa-solid fa-book me-1 text-white"></i>Appoint Now!</a>
+                        </div>
+                    </div>                
+            </div>
+        }
+    </div>
+</div>
+
+

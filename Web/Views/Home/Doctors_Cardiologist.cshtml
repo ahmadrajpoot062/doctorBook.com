@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Cardiologists";
+}
+
+@model List<Core.Entities.Doctor>
+
+<marquee class="fst-italic fw-bold" behavior="sroll" scrollamount="10" style="color: rgb(62, 9, 68);">
+    Book your
+    Doctors's appointment online quickly and
+    easily!
+</marquee>
+
+<div id="carouselExampleIndicators"
+     class="carousel slide carousel-fade mx-2 mx-sm-3 mx-md-4 mx-lg-5 shadow p-0 rounded-3" data-bs-ride="carousel"
+     data-bs-interval="2000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"
+                style="width: 30px; height: 30px; border-radius: 50%; background-color: #ddd;"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"
+                style="width: 30px; height: 30px; border-radius: 50%; background-color: #ddd;"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"
+                style="width: 30px; height: 30px; border-radius: 50%; background-color: #ddd;"></button>
+    </div>
+    <div class="carousel-inner h-100">
+        <div class="carousel-item active h-100">
+            <img src="~/images/cardiologist01.jpg" class="img-fluid d-block w-100 rounded-3 h-100" alt="...">
+        </div>
+        <div class="carousel-item h-100">
+            <img src="~/images/cardiologist02.jpg" class="img-fluid d-block w-100 rounded-3 h-100" alt="...">
+        </div>
+        <div class="carousel-item h-100">
+            <img src="~/images/cardiologist03.jpg" class="img-fluid d-block w-100 rounded-3 h-100" alt="...">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev" style="width: 60px; height: 60px; background-color: rgba(0, 0, 0, 0.5); border-radius: 0 50% 50% 0;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 10px;">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next" style="width: 60px; height: 60px; background-color: rgba(0, 0, 0, 0.5); border-radius: 50% 0 0 50%;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 10px;">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="h1 fw-bolder fst-italic mt-5 text-center text-secondary shadow-sm py-3 px-2 px-sm-0"
+     style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    Best Cardiologists For you
+</div>
+
+<partial name="_allDoctorsPartial" model="Model" />
+

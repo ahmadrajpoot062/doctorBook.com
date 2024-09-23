@@ -1,0 +1,30 @@
+﻿@model DoctorSlots
+
+<h1 class="fw-bold text-center mb-4">Slots <i class="fa fa-solid fa-list"></i> for @Model.AppointmentDate.ToString("MMMM dd, yyyy")</h1>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 pb-2">
+    @foreach (var slot in Model.AvailableSlots)
+    {
+        bool isBooked = Model.BookedSlots?.Contains(slot) ?? false;
+
+        if (!isBooked)
+        {
+            <div class="col">
+                <a href="#" class="text-decoration-none slot-link" data-bs-toggle="modal" data-bs-target="#SureModal" data-slot="@slot" data-email="@Model.Doctor.Email" data-first-name="@Model.Doctor.First_Name" data-last-name="@Model.Doctor.Last_Name" data-appointment-date="@Model.AppointmentDate.ToString("yyyy-MM-dd")">
+                    <div class="card pt-3 d-flex justify-content-center align-items-center text-center text-white" style=" background: linear-gradient(90deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);">
+                        <i class="bi bi-alarm fs-5 mb-1"></i>
+                        <p>@slot</p>
+                    </div>
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="col">
+                    <div class="pt-3 rounded-2 border border-dark d-flex flex-column justify-content-center align-items-center text-center text-white" style=" background: linear-gradient(90deg, rgb(232, 46, 32) 0%, rgb(51, 7, 4) 100%);">
+                        <i class="bi bi-x-circle fs-5 mb-1"></i>
+                        <p>@slot</p>
+                    </div>
+            </div>
+        }
+    }
+</div>

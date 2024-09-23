@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewData["Title"] = "FeedBack";
+}
+
+@section Styles {
+    <style>
+        body {
+            background-image: url('/images/feedback-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+}
+
+
+<marquee class="fst-italic fw-bold" behavior="sroll" scrollamount="10" style="color: rgb(62, 9, 68);">
+    "We value your
+    feedback! We'd love to hear
+    from you!
+    Share your feedback on your recent doctorBook.com experience."
+</marquee>
+
+<div class="h1 display-5 fw-bolder fst-italic text-center px-2 px-sm-0 shadow pb-2"
+     style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: rgb(152, 37, 165);">
+    Feedback <i class="fa fa-comments-o ms-2" aria-hidden="true"></i>
+</div>
+
+<div class="container mt-5 mb-4">
+    <div class="row">
+        <div class="col-12 col-md-5 order-2 order-md-1 mt-3 mt-md-0">
+            <p class="text-center px-5 px-md-3 py-4 mb-0 text-white"
+               style="background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);">
+                Thank you for choosing doctorBook.com for your
+                healthcare needs. We
+                appreciate your feedback on your doctorBook.com experience. Your insights help us improve our
+                services and connect patients with the best possible care.
+            </p>
+            <img src="~/images/feedback.jpg" class="img-fluid shadow" alt="">
+        </div>
+        <div class="col-12 col-md-7 order-1 order-md-2">
+            <form method="post" class="shadow bg-light border border-dark border-1 rounded-3 p-3 text-white"
+                  style="background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);">
+                <div class="form-section row mt-3 mb-3">
+                    <div class="col-12 mb-3">
+                        <label for="name" class="form-label">Your Name (Optional)</label>
+                        <input type="text" class="w-100 form-control shadow hover-size" id="name" name="name"
+                               placeholder="Enter your name">
+                    </div>
+                </div>
+                <div class="form-section mb-3">
+                    <label for="appointment" class="form-label">Appointment Details (Optional)</label>
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <input type="text" class="form-control shadow hover-size" id="appointment"
+                                   placeholder="Doctor's name (if applicable)" name="Doctor name">
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <input type="date" class="form-control shadow hover-size" id="appointmentDate"
+                                   placeholder="Appointment Date (YYYY-MM-DD)" name="date of appointment">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section mb-4">
+                    <label for="feedback" class="form-label">Your Feedback (Required)</label>
+                    <textarea class="form-control shadow hover-size" id="feedback" name="feedback" rows="5"
+                              placeholder="Share your experience using doctorBook.com" required></textarea>
+                </div>
+
+                <div class="form-section mb-4">
+                    <label class="form-label d-block">Rate us as:</label>
+                    <div class="form-check form-check-block form-check-sm-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="ratingGood" value="good"
+                               checked>
+                        <label class="form-check-label" for="ratingGood">Good</label>
+                    </div>
+
+                    <div class="form-check form-check-block form-check-sm-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="ratingNeutral"
+                               value="neutral">
+                        <label class="form-check-label" for="ratingNeutral">Neutral</label>
+                    </div>
+
+                    <div class="form-check form-check-block form-check-sm-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="ratingBad" value="bad">
+                        <label class="form-check-label" for="ratingBad">Bad</label>
+                    </div>
+                </div>
+
+                <div class="form-section mb-5">
+                    <label for="reference" class="form-label">How did you hear about us?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="reference" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Friends and Family
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="reference" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Social Media
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="reference" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Adds
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="reference" id="flexRadioDefault2"
+                               checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Others
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section d-flex justify-content-center">
+                    <button type="submit" class="btn text-white border"
+                            style="background: linear-gradient(180deg, rgb(89, 31, 103) 0%, rgb(190, 74, 203) 100%);">
+                        Submit
+                        Feedback
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

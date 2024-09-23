@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewData["Title"] = "Doctor_Profile";
+}
+
+@if (User.HasClaim(claim => claim.Type == "Role" && claim.Value == "Doctor"))
+{
+    Layout = "_doctorLayout";
+}
+else
+{
+    Layout = "_Layout";
+}
+
+@model Doctor
+
+@section Styles {
+<style>
+    body {
+        background-image: url(~/images/feedback-bg.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .btn {
+        background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);
+    }
+
+        .btn:hover {
+            background: rgb(146, 11, 108);
+            transform: scale(1.03);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .profile-picture-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000; /* Add a border if needed */
+        }
+
+            .profile-picture-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+</style>
+}
+
+<marquee class="fst-italic fw-bold" behavior="sroll" scrollamount="10" style="color: rgb(62, 9, 68);">
+    "Welcome to my
+    Profile. You can easliy appoint me."
+</marquee>
+
+<div class="h1 display-5 fw-bolder fst-italic text-center px-2 px-sm-0 shadow py-2"
+     style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: rgb(152, 37, 165);">
+    Profile<i class="bi bi-person-vcard ms-2"></i>
+</div>
+
+<main class="container pt-4 pb-5">
+    <div class="row align-items-center">
+        <div class="col-md-4 d-flex flex-column align-items-center">
+            <div class="profile-picture-container">
+                <img src="@Model.ImagePath" alt="Doctor image" class="img-fluid img-thumbnail mx-auto d-block rounded-circle">
+            </div>
+            <h3 class="text-center h1 fw-bold">Dr. @Model.First_Name @Model.Last_Name</h3>
+            <p class="text-center fs-4">@Model.Speciality</p>
+            <ul class="list-group list-group-flush w-100">
+                <li class="list-group-item rounded-2 rounded-end-4 text-white mb-1"
+                    style="background-color: rgb(185, 92, 182); border: 3px solid purple;">
+                    <p class="fw-bold mb-0 ">Experience:</p>
+                    <p class="mb-0">@Model.Experiance Years</p>
+                </li>
+                <li class="list-group-item rounded-2 rounded-end-4 text-white mb-1"
+                    style="background-color: rgb(185, 92, 182); border:3px solid purple">
+                    <p class="fw-bold mb-0">Wait Time:</p>
+                    <p class="mb-0">@Model.Wait_Time mins</p>
+                </li>
+                <li class="list-group-item rounded-2 rounded-end-4 text-white mb-1"
+                    style="background-color: rgb(185, 92, 182); border:3px solid purple">
+                    <p class="fw-bold mb-0">Avg. Time to Patient:</p>
+                    <p class="mb-0">@Model.Consultation_Time mins</p>
+                </li>
+                <li class="list-group-item rounded-2 rounded-end-4 text-white"
+                    style="background-color: rgb(185, 92, 182); border:3px solid purple">
+                    <p class="fw-bold mb-0">Diagnosis Satisfaction:</p>
+                    <p class="mb-0">@Model.Diagnosis_Satisfaction %</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8 pt-5 pt-md-0 ">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold">Dr. @Model.First_Name @Model.Last_Name - @Model.Speciality, Lahore - Appointment Details:</h4>
+                    <p>
+                        Dr. @Model.First_Name @Model.Last_Name is a qualified @Model.Speciality in Lahore with over @Model.Experiance years of experience in the
+                        field. With numerous qualifications, the doctor provides the best treatment for all
+                        @Model.Speciality related diseases. You can book an appointment with Dr. @Model.First_Name @Model.Last_Name through
+                        "doctorBook.com"
+                    </p>
+                    <h4 class="fw-bold"><i class="bi bi-mortarboard me-1"></i>Qualification:</h4>
+                    <p>@Model.Qualification</p>
+                    <h4 class="fw-bold"><i class="bi bi-clock me-1"></i>Timings:</h4>
+                    <p>@Model.Timings</p>
+                    <h4 class="fw-bold">Charges:</h4>
+                    <p>@Model.Charges PKR</p>
+                    <h4 class="fw-bold"><i class="bi bi-geo-alt"></i>Address:</h4>
+                    <p>Near Old Anarkali, Mayo Hospital, Lahore</p>
+                </div>
+            </div>
+            <a href="/Appointment/Book_Appointment?id=@Model.Id" class="btn text-white  w-100 fs-5 fw-bold mt-4">Appoint Now!</a>
+        </div>
+    </div>
+</main>
+
+

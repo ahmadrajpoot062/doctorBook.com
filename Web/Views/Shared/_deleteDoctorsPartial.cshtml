@@ -1,0 +1,42 @@
+﻿@model List<Doctor>
+
+<div class="table-responsive">
+    <table class="table table-striped-columns table-hover mt-5 align-middle border border-dark">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Speciality</th>
+                <th scope="col">Qualification</th>
+                <th scope="col">Timings</th>
+                <th scope="col">Charges (pkr)</th>
+                <th scope="col">Experience (years)</th>
+                <th scope="col">Consultation Time (mins)</th>
+                <th scope="col">Wait Time (mins)</th>
+                <th scope="col">Diagnosis Satisfaction (%)</th>
+                <th scope="col">Delete?</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach (var Doctor in Model)
+            {
+                <tr>
+                    <td>@Doctor.Id</td>
+                    <td>@Doctor.First_Name @Doctor.Last_Name</td>
+                    <td>@Doctor.Email</td>
+                    <td>@Doctor.Speciality</td>
+                    <td>@Doctor.Qualification</td>
+                    <td>@Doctor.Timings</td>
+                    <td>@Doctor.Charges pkr</td>
+                    <td>@Doctor.Experiance years</td>
+                    <td>@Doctor.Consultation_Time mins</td>
+                    <td>@Doctor.Wait_Time mins</td>
+                    <td>@Doctor.Diagnosis_Satisfaction %</td>
+                    <td><a id="delete" onclick="deleteDoctors(@Doctor.Id);" class="d-inline me-1 btn btn-danger rounded-1">Delete</a><a href="/Admin/Doctor_Profile?id=@Doctor.Id" class="d-inline btn px-3 btn-success">View</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

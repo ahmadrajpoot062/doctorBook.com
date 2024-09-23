@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+@model Core.Entities.Doctor
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request_Submitted! - Book Your Appointment Online</title>
+    <link href="~/lib/bootstrap/bootstrap css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/my css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-image: url("/images/feedback-bg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+       .btn {
+            color: white;
+            background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);
+        }
+
+         .btn:hover {
+                background: rgb(103, 15, 112);
+                border-color: blueviolet;
+                transform: scale(1.03);
+                transition: transform 0.2s ease-in-out;
+            }
+            .bi{
+                font-size:200px;
+            }
+    </style>
+</head>
+
+<body class="p-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex flex-column align-items-center justify-content-center">
+                <i class="bi bi-hand-thumbs-up"></i>
+                <h1 class="text-center">Congratulations!</h1>
+                <p class="text-center">
+                    Your Request has been submitted successfully to Dr. @Model.First_Name @Model.Last_Name
+                    . Please wait until Dr. @Model.First_Name @Model.Last_Name will
+                    accept
+                    your request. You will recieve an email when Dr. @Model.First_Name @Model.Last_Name will accept your request. So be patient!
+                </p>
+                <div class="d-flex justify-content-center">
+                    <a href="/Appointment/Book_Appointment?id=@Model.Id" class="btn px-5 py-2 mt-2  rounded-3 text-white text-decoration-none">OK</a>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/bootstrap js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+﻿@model Doctor
+
+@{
+    Layout = null;
+}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doctor_Profile - Admin Panel</title>
+    <link href="~/lib/bootstrap/bootstrap css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/my css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        .profile-picture-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000; /* Add a border if needed */
+        }
+
+            .profile-picture-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    </style>
+</head>
+
+<body class="pt-3">
+
+    <div class="container">
+    <partial name="_AdminLoginPartial" />
+    <div class="h1 display-5 fw-bolder fst-italic text-center px-2 px-sm-0 shadow py-2"
+         style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: rgb(152, 37, 165);">
+            Profile<i class="bi bi-person-vcard ms-2"></i>
+    </div>
+
+                <main class="container pt-4 pb-5">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-12 col-md-5  d-flex flex-column align-items-center">
+                            <div class="profile-picture-container">
+                                <img src="@Model.ImagePath" alt="Doctor image" class="img-fluid img-thumbnail mx-auto d-block rounded-circle">
+                            </div>
+                            <h3 class="text-center h1 fw-bold">Dr. @Model.First_Name @Model.Last_Name</h3>
+                            <p class="text-center fs-4">@Model.Speciality</p>
+                            <ul class="list-group list-group-flush w-100">
+                                <li class="list-group-item rounded-2 rounded-end-4 text-white mb-1"
+                                    style="background-color: rgb(185, 92, 182); border: 3px solid purple;">
+                                    <p class="fw-bold mb-0 ">Experience:</p>
+                                    <p class="mb-0">@Model.Experiance Years</p>
+                                </li>
+                                <li class="list-group-item rounded-2 rounded-end-4 text-white mb-1"
+                                    style="background-color: rgb(185, 92, 182); border:3px solid purple">
+                                    <p class="fw-bold mb-0">Wait Time:</p>
+                                    <p class="mb-0">@Model.Wait_Time mins</p>
+                                </li>
+                                <li class="list-group-item rounded-2 rounded-end-4 text-white mb-1"
+                                    style="background-color: rgb(185, 92, 182); border:3px solid purple">
+                                    <p class="fw-bold mb-0">Avg. Time to Patient:</p>
+                                    <p class="mb-0">@Model.Consultation_Time mins</p>
+                                </li>
+                                <li class="list-group-item rounded-2 rounded-end-4 text-white"
+                                    style="background-color: rgb(185, 92, 182); border:3px solid purple">
+                                    <p class="fw-bold mb-0">Diagnosis Satisfaction:</p>
+                                    <p class="mb-0">@Model.Diagnosis_Satisfaction %</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-7 pt-5 pt-md-0 ">
+                            <div class="card shadow">
+                                <div class="card-body p-4">
+                                    <h4 class="fw-bold">Dr. @Model.First_Name @Model.Last_Name - @Model.Speciality, Lahore - Appointment Details:</h4>
+                                    <p>
+                                        Dr. @Model.First_Name @Model.Last_Name is a qualified @Model.Speciality in Lahore with over @Model.Experiance years of experience in the
+                                        field. With numerous qualifications, the Doctor provides the best treatment for all
+                                        @Model.Speciality related diseases. You can book an appointment with Dr. @Model.First_Name @Model.Last_Name through
+                                        "DoctorBook.com"
+                                    </p>
+                            <h4 class="fw-bold"><i class="bi bi-mortarboard me-1"></i>Qualification:</h4>
+                                    <p>@Model.Qualification</p>
+                            <h4 class="fw-bold"><i class="bi bi-clock me-1"></i>Timings:</h4>
+                                    <p>@Model.Timings</p>
+                                    <h4 class="fw-bold">Charges:</h4>
+                                    <p>@Model.Charges PKR</p>
+                            <h4 class="fw-bold"><i class="bi bi-geo-alt"></i>Address:</h4>
+                                    <p>Near Old Anarkali, Mayo Hospital, Lahore</p>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+        
+                </main>
+    </div>
+</body>
+</html>
+
+

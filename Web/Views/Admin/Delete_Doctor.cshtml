@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+@model List<Doctor>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Delete Doctor - Admin Panel</title>
+    <link href="~/lib/bootstrap/bootstrap css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/my css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #backToHome .btn {
+            color: white;
+            background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);
+        }
+
+        #backToHome .btn:hover {
+                background: rgb(103, 15, 112);
+                border-color: blueviolet;
+                transform: scale(1.03);
+                transition: transform 0.2s ease-in-out;
+            }
+
+    </style>
+</head>
+
+<body class="mt-3">
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-12">
+                <partial name="_AdminLoginPartial" />
+                <div class="h1 display-5 fw-bolder fst-italic text-center px-2 px-sm-0 shadow py-2"
+                     style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: rgb(152, 37, 165);">
+                    Delete
+                    Doctors  <i class="fa fa-trash"></i>
+                </div>
+
+                <div id="deleteDoctorView">
+                    <partial name="_deleteDoctorsPartial" model="Model"/>
+                </div> 
+                
+                <div id="backToHome" class="mt-3 d-flex justify-content-center">
+                    @Html.ActionLink(" Back to Home", "Index", "Admin", null, new { @class = "btn mb-5 px-5 py-3 p-2 rounded-3 text-white text-decoration-none fa fa-arrow-left me-2" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/bootstrap js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        function deleteDoctors(doctorId) {
+            
+            $.ajax({
+                type: "POST", // HTTP method
+                url: "/Admin/Delete_Doctor", // URL to send the request to
+                data: {id: doctorId}, // Data to send
+                
+                success: function (result) {
+                    $('#deleteDoctorView').html(result).fadeIn('slow'); 
+                },
+                error: function () {
+                    alert('Failed to delete doctor.');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

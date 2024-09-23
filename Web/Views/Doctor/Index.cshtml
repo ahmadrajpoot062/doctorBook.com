@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+    Layout = "_doctorLayout";
+}
+
+@model List<Core.Entities.Doctor>
+
+@section Styles{
+<style>
+    #patientOrAdmin .btn {
+        color: white;
+        background: rgb(161, 62, 185);        
+    }
+
+        #patientOrAdmin .btn:hover {
+            background: rgb(103, 15, 112);
+            border-color: blueviolet;
+            color: white;
+            transform: scale(1.03);
+            transition: transform 0.2s ease-in-out;
+        }
+</style>
+}
+<marquee class="fst-italic fw-bold" behavior="sroll" scrollamount="10" style="color: rgb(62, 9, 68);">
+    We Welcome our
+    all doctors! Here you can deal with your patients remotely!
+</marquee>
+
+<main class="container">
+    <div class="row">
+        @* <h3>@ViewData["Data"]</h3> *@
+        <div id="col1" class="col-12 col-xl-6 py-3 position-relative pe-5">
+            <h1 class="display-2 display-xxl-1 fw-bold mb-4">
+                Manage appointments with your patients<div style="color:rgb(116, 34, 136);">
+                    Online!
+                </div>
+            </h1>
+            <p class="lead ps-xl-0 fw-bold fst-italic mt-5">
+                Give appointments to your patients online
+                easily!
+            </p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item ps-0">Manage appointments 24/7 from the comfort of your home.</li>
+                <li class="list-group-item ps-0">Here you can accept appointment requests of your patients.</li>
+                <li class="list-group-item ps-0">You can reject appointment requests of your patients.</li>
+                <li class="list-group-item ps-0">You can see all of your appointments with your patients.</li>
+                <li class="list-group-item ps-0">Send confirmation and cancellation emails to your patients.</li>
+            </ul>
+            <p class="lead ps-xl-0 fw-bold fst-italic mt-3">Here you can avail services of:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item ps-0">Convenient Appointments.</li>
+                <li class="list-group-item ps-0">View Profile.</li>                
+                <li class="list-group-item ps-0">Secure Platform.</li>
+            </ul>
+            <div class="mt-4">
+                @Html.ActionLink("View Appointments", "Appointments", "Doctor", null, new { @class = "btn mt-3 me-1 rounded text-white px-5 ", style = "background-color: rgb(161, 62, 185); width:250px" })
+                @Html.ActionLink(" View Profile", "View_Profile", "Doctor", null, new { @class = "btn btn-danger mt-3 rounded px-5 bi bi-person-vcard", style = "width:250px" })               
+            </div>
+        </div>
+        <div id="col2"
+             class="col-12 col-xl-6 px-0 d-flex align-items-center justify-content-center p-0 mt-3 mt-xl-0">
+            <img src="~/images/doctors.jpg" class="img-fluid shadow" alt="">
+        </div>
+    </div>
+</main>
+
+<div class="h1 display-5 fw-bolder fst-italic text-center text-secondary shadow-sm pb-3 px-2 px-sm-0 mt-5"
+     style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    All Doctors<i class="fa fa-user-md ms-2"></i>
+</div>
+<partial name="_allDoctorsPartial" model="Model" />
+<partial name="_AboutPartial" />
+<partial name="_ContactUsPartial" />
+
+
+
+
+

@@ -1,0 +1,201 @@
+﻿@page
+@model LoginModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN - Book Your Appointment Online</title>
+    <link href="~/lib/bootstrap/bootstrap css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/my css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .container-fluid {
+            height:100%;            
+        }
+
+        body{
+            background: linear-gradient(90deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);
+        }
+
+        #logo {
+            font-size: 260px;
+        }
+
+        @@media screen and (min-width:768px) {
+            #logo {
+                font-size: 300px;
+            }
+        }
+
+        .row {
+            border: none;
+            box-shadow: none;
+        }
+
+        @@media screen and (min-width:576px) {
+            .row {
+                box-shadow: 10px 10px 15px 5px rgba(62, 9, 68, 0.5);
+                /* Dark shadow on all sides */
+                border: 1px solid rgba(62, 9, 68);
+                height: auto;
+                width: 70vw;
+            }
+        }
+
+        @@media screen and (max-width: 991px) {
+            .row {
+                width: 90vw;
+            }
+        }
+
+        @@media screen and (max-width: 767px) {
+            .row {
+                width: 95vw;
+            }
+        }
+
+        #signUpLink a {
+            text-decoration: none;
+            color: rgb(62, 9, 68);
+            font-weight: bold;
+        }
+
+            #signUpLink a:hover {
+                color: green;
+                transform: scale(1.02);
+                transition: transform 0.2s ease-in-out;
+            }
+
+        .btn {
+            color: white;
+            background-color: blueviolet;
+        }
+
+            .btn:hover {
+                background-color: rgb(103, 15, 112);
+                border-color: blueviolet;
+                color: white;
+                transform: scale(1.03);
+                transition: transform 0.2s ease-in-out;
+            }
+
+        .form-control {
+            background-color: transparent;
+            padding: 5px 0;
+            border-radius: 0px;
+            border: none;
+            border-bottom: 2px solid blueviolet;
+        }
+
+            .form-control:focus {
+                border-color: transparent;
+                box-shadow: none;
+                background-color: transparent;
+                padding: 5px 0;
+                border-radius: 0px;
+                border: none;
+                border-bottom: 2px solid blueviolet;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid my-5 d-flex justify-content-center align-items-center">
+        <div class="row rounded-5">
+            <div class="col-5 col-md-6 col-xl-7 rounded-start-5 d-none d-sm-flex flex-column justify-content-center align-items-center"
+                 style="background-color: rgba(101, 28, 169, 0.501);">
+                <i id="logo" class="fa fa-user-md text-white"></i>
+                <p class="text-white text-center">
+                    Welcome to doctorBook! We prioritize your privacy. Login securely to
+                    manage your healthcare
+                    online. Your information is protected with industry-standard security
+                    measures.
+                </p>
+            </div>
+            <div id="col2"
+                 class="col-11 col-sm-7 col-md-6 col-xl-5 py-4 rounded-end-5 bg-light px-0 d-flex flex-column justify-content-center mx-auto mx-sm-0">
+                <h3 class="mb-4 d-inline-block w-50 rounded-end-pill text-white p-2 text-center fst-italic"
+                    style="background-color: blueviolet;">
+                    Welcome!
+                </h3>
+                <form class="px-4" id="account" method="post">
+                    <h2 class="text-center fw-bolder mb-4 shadow rounded p-2"
+                        style="background-color: rgb(242, 247, 247); color:blueviolet">
+                        LOGIN
+                    </h2>
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com"/>
+                            <label asp-for="Input.Email" class="form-label"><i class="bi bi-envelope-fill me-1"></i> Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>    
+
+                    <div class="form-floating mb-3 position-relative">
+                        <input asp-for="Input.Password" class="form-control ps-2" autocomplete="current-password" aria-required="true" placeholder="password" id="passwordInput" />
+                        <label asp-for="Input.Password" class="form-label w-100"><i class=" fa fa-lock fs-5 me-1"></i> Password</label>
+                        <i class="fa fa-eye position-absolute end-0 top-50 translate-middle fs-5" aria-hidden="true" id="passwordEye"></i>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="checkbox mb-3">
+                        <label asp-for="Input.RememberMe" class="form-label">
+                            <input class="form-check-input border border-dark" asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+
+                    
+                    <div class="d-flex justify-content-center">                        
+                        <button id="login-submit" type="submit" class="rounded-pill btn fw-bold my-3 w-75 fs-5">Log in<i class="fa fa-sign-in ms-1" aria-hidden="true"></i></button>
+                    </div>
+                    <hr>
+                    <div class="text-center mb-2">
+                        Or Login in with:
+                    </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <a href="#" class="btn me-2 w-50"><i class="fa fa-facebook me-1"></i> Facebook</a>
+                        <a href="#" class="btn w-50"><i class="fa fa-google me-1"></i> Google</a>
+                    </div>
+                    <div id="signUpLink">
+                        <p class="mb-0">Don't have an account?</p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="d-block">Create Account</a>
+                    </div>
+                    <div class=" mt-2 d-flex justify-content-center">                        
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/bootstrap js/bootstrap.bundle.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const passwordInput = document.querySelector('#passwordInput');
+        const passwordEye = document.querySelector('#passwordEye');
+
+        passwordEye.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordEye.classList.remove('fa-eye');
+                passwordEye.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordEye.classList.remove('fa-eye-slash');
+                passwordEye.classList.add('fa-eye');
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
+

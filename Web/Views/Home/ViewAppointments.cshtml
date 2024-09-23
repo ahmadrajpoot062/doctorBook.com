@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "Appointments";
+}
+
+@model List<Core.Entities.Appointment>
+
+@section Styles {
+    <style>
+        /* Center modal vertically and horizontally */
+        .modal-dialog-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+    </style>
+}
+
+<marquee class="fst-italic fw-bold" behavior="scroll" scrollamount="10" style="color: rgb(62, 9, 68);">
+    Book your
+    Doctor's appointment online quickly and
+    easily!
+</marquee>
+
+<main class="container-fluid px-5">
+    <div class="row">
+        <div class="col-12 pb-3 pe-5">
+            <h1 class="display-2 display-xxl-1 fw-bold w-75">
+                Here are your appointments list with<div style="color:rgb(116, 34, 136);">
+                    Doctors!<i class="fa fa-calendar ms-2" aria-hidden="true"></i>
+                </div>
+            </h1>
+        </div>
+
+        <div class="col-12">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="~/images/noAppointmentFound.jpg" style="height:40%;width:40%;" />
+                    <h1 class="text-danger" style="font-family:Copperplate">No Appointments yet!!</h1>
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4 ms-auto">
+                            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                                <div class="input-group shadow " style="height: 45px;">
+                                    <input id="searchByDate" type="date" class="border border-secondary form-control" aria-label="Search">
+                                    <button id="searchByDateButton" class=" btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="appointmentReq">
+                    <partial name="_appointmentRequestsPartial" model="@Model" />
+                </div>
+            }
+        </div>
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="SureModal" tabindex="-1" aria-labelledby="SureModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="SureModalLabel">Are you sure?</h1>
+            </div>
+            <div class="modal-body">
+                <p class="mb-4">Do you want to cancel the appointment with Dr. <span id="doctorName"></span> that will be on <span id="appointmentDate"></span> at <span id="appointmentTime"></span>?</p>
+                <a id="confirmButton" href="#" class="btn btn-primary text-white border w-25">Yes</a>
+                <button type="button" class="btn btn-danger text-white w-25" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("SureModal");
+            const confirmButton = document.getElementById("confirmButton");
+            const doctorNameSpan = document.getElementById("doctorName");
+            const appointmentDateSpan = document.getElementById("appointmentDate");
+            const appointmentTimeSpan = document.getElementById("appointmentTime");
+
+            modal.addEventListener("show.bs.modal", function (event) {
+                const button = event.relatedTarget;
+                const appointmentId = button.getAttribute("data-appointment-id");
+                const doctorName = button.getAttribute("data-doctor-name");
+                const doctorEmail = button.getAttribute("data-doctor-email");
+                const appointmentDate = button.getAttribute("data-appointment-date");
+                const appointmentTime = button.getAttribute("data-appointment-time");
+
+                doctorNameSpan.textContent = doctorName;
+                appointmentDateSpan.textContent = appointmentDate;
+                appointmentTimeSpan.textContent = appointmentTime;
+
+                confirmButton.href = `/Appointment/Cancel_Appointment?appointmentId=${appointmentId}&email=${doctorEmail}`;
+            });
+        });
+
+            $(document).ready(function () {
+                $('#searchByDateButton').click(function () {
+                    var date = $('#searchByDate').val();
+                    $.ajax({
+                        type: "GET",
+                        url: "/Appointment/SearchByDate",
+                        data: { date: date },
+                        success: function (result) {
+                            $('#appointmentReq').html(result).fadeIn('slow'); // Update the appointment container with the new result
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.error('Not Found: ' + textStatus + ', ' + errorThrown); // Log any errors
+                        }
+                    });
+                });
+            });
+    </script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+}

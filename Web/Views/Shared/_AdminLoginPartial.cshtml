@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<myAppUsers> SignInManager
+@inject UserManager<myAppUsers> UserManager
+
+<div class="ms-auto w-25">
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle border px-4 rounded-1 text-white" style="background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hello @User.Identity?.Name!
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index"><i class="fa fa-solid fa-gear text-dark me-1"></i>Manage</a>
+                    <form class="dropdown-item p-0" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="btn btn-link dropdown-item m-0"><i class="bi bi-box-arrow-right text-dark me-1"></i>Logout</button>
+                    </form>
+                </div>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="btn btn-outline-light rounded-pill ms-2" style="height:40px; width:90px;" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                <a class="btn btn-outline-light rounded-pill ms-2" style="height:40px; width:90px;" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+        }
+    </ul>
+</div>
+

@@ -1,0 +1,224 @@
+﻿@page
+@model RegisterModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN_UP - Book Your Appointment Online</title>
+    <link href="~/lib/bootstrap/bootstrap css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/my css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .container-fluid {
+            height: 100%;            
+        }
+
+        body{
+            background: linear-gradient(180deg, rgb(161, 62, 185) 0%, rgb(62, 9, 68) 100%);
+        }
+
+        #logo {
+            font-size: 200px;
+        }
+
+        @@media screen and (min-width:768px) {
+            #logo {
+                font-size: 300px;
+            }
+        }
+
+        .row {
+            border: none;
+            box-shadow: none;
+        }
+
+        @@media screen and (min-width:576px) {
+            .row {
+                box-shadow: 10px 10px 15px 5px rgba(62, 9, 68, 0.5);
+                /* Dark shadow on all sides */
+                border: 1px solid rgba(62, 9, 68);
+                height: auto;
+                width: 70vw;
+            }
+        }
+
+        @@media screen and (max-width: 991px) {
+            .row {
+                width: 90vw;
+            }
+        }
+
+        @@media screen and (max-width: 767px) {
+            .row {
+                width: 95vw;
+            }
+        }
+
+        #loginLink a {
+            text-decoration: none;
+            color: rgb(62, 9, 68);
+            font-weight: bolder;
+        }
+
+            #loginLink a:hover {
+                color: green;
+                transform: scale(1.02);
+                transition: transform 0.2s ease-in-out;
+            }
+
+        .btn {
+            color: white;
+            background-color: blueviolet;
+        }
+
+            .btn:hover {
+                background-color: rgb(103, 15, 112);
+                border-color: blueviolet;
+                color: white;
+                transform: scale(1.03);
+                transition: transform 0.2s ease-in-out;
+            }
+
+        .form-control {
+            background-color: transparent;
+            padding: 5px 0;
+            border-radius: 0px;
+            border: none;
+            border-bottom: 2px solid blueviolet;
+        }
+
+            .form-control:focus {
+                border-color: transparent;
+                box-shadow: none;
+                background-color: transparent;
+                padding: 5px 0;
+                border-radius: 0px;
+                border: none;
+                border-bottom: 2px solid blueviolet;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid my-5 d-flex justify-content-center align-items-center">
+        <div class="row rounded-5">
+            <div class="col-5 col-md-6 col-xl-7 rounded-start-5 d-none d-sm-flex flex-column justify-content-center align-items-center"
+                 style="background-color: rgba(101, 28, 169, 0.501);">
+                <i id="logo" class="bi bi-person-circle text-white"></i>
+                <p class="text-white text-center">
+                    Join DoctorBook today and take control of your health! Create your
+                    secure DoctorBook account to conveniently manage your healthcare online.
+                </p>
+            </div>
+            <div id="col2"
+                 class="col-11 col-sm-7 col-md-6 col-xl-5 py-3 rounded-end-5 bg-light px-0 d-flex flex-column justify-content-center mx-auto mx-sm-0">
+                <h3 class="mb-4 d-inline-block w-50 rounded-end-pill text-white p-2 text-center fst-italic"
+                    style="background-color: blueviolet;">
+                    Create Account!
+                </h3>
+                <form class="px-4" id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <h2 class="text-center fw-bolder mb-4 shadow rounded p-2"
+                        style="background-color: rgb(242, 247, 247); color:blueviolet">
+                        SIGN UP
+                    </h2>                   
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="form-floating mb-2">
+                        <input asp-for="Input.FirstName" class="form-control" autocomplete="FirstName" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.FirstName" class="w-100">First Name</label>
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input asp-for="Input.LastName" class="form-control" autocomplete="LastName" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.LastName" class="w-100"> Last Name</label>
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.Email" class="w-100"><i class="bi bi-envelope-fill me-1"></i> Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-2">
+                        <input asp-for="Input.Password" class="form-control ps-2" autocomplete="new-password" aria-required="true" placeholder="password" id="passwordInput" />
+                        <label asp-for="Input.Password" class="w-100"><i class="fa fa-lock fs-5 me-1" ></i> Password</label>
+                        <i class="fa fa-eye position-absolute end-0 top-50 translate-middle fs-5" aria-hidden="true" id="passwordEye" ></i>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Input.ConfirmPassword" class="form-control ps-2" autocomplete="new-password" aria-required="true" placeholder="password" id="confirmPasswordInput" />
+                        <label asp-for="Input.ConfirmPassword" class="w-100">
+                            <i class="fa fa-lock fs-5 me-1"></i> Confirm Password
+                        </label>
+                        <i class="fa fa-eye position-absolute end-0 top-50 translate-middle fs-5" aria-hidden="true" id="confirmPasswordEye"></i>
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">                        
+                        <select asp-for="Input.Role" class="form-select form-control pb-2 ps-3">
+                            <option value="">Register As:</option>
+                            <option value="Patient">Patient</option>
+                            <option value="Doctor">Doctor</option>
+                        </select>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input border-dark" type="checkbox" value="" id="flexCheckChecked" required>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            I accept the <a href="@Url.Action("Terms_of_use","Home")">terms of Use</a>
+                        </label>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button id="registerSubmit" type="submit" class="rounded-pill btn fw-bold my-3 w-75 fs-5">Register Now<i class="fa fa-user-plus ms-2" aria-hidden="true"></i></button>
+                    </div>
+                    <div id="loginLink">
+                        <p class="mb-0">Already have an account?</p>
+                        <a href="./Login" class="d-block">Login</a>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/bootstrap/bootstrap js/bootstrap.bundle.min.js"></script>
+    <script>
+        const passwordInput = document.querySelector('#passwordInput');
+        const passwordEye = document.querySelector('#passwordEye');
+        const confirmPasswordInput = document.querySelector('#confirmPasswordInput');
+        const confirmPasswordEye = document.querySelector('#confirmPasswordEye');
+
+        passwordEye.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordEye.classList.remove('fa-eye');
+                passwordEye.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordEye.classList.remove('fa-eye-slash');
+                passwordEye.classList.add('fa-eye');
+            }
+        });
+
+        confirmPasswordEye.addEventListener('click', () => {
+            if (confirmPasswordInput.type === 'password') {
+                confirmPasswordInput.type = 'text';
+                confirmPasswordEye.classList.remove('fa-eye');
+                confirmPasswordEye.classList.add('fa-eye-slash');
+            } else {
+                confirmPasswordInput.type = 'password';
+                confirmPasswordEye.classList.remove('fa-eye-slash');
+                confirmPasswordEye.classList.add('fa-eye');
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
+
