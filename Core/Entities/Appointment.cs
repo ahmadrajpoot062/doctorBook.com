@@ -9,7 +9,7 @@ namespace Core.Entities
 	public class Appointment
 	{
 		public int  Id { get; set; }
-		public string UserEmail { get; set; }
+		public string  UserEmail { get; set; }
 		public string DoctorEmail { get; set; }
 		public string DoctorName { get; set; }
 		public DateTime AppointmentDate { get; set; }
